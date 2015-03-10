@@ -1,17 +1,18 @@
 package dk.cphbusiness.banking;
 
+import dk.cphbusiness.banking.control.BankManager;
+import dk.cphbusiness.banking.control.BankManagerImplementation;
+import dk.cphbusiness.banking.data.BankDataAccessor;
+import dk.cphbusiness.banking.data.BankDataAccessorStub;
+import dk.cphbusiness.banking.view.BankConsole;
+
 public class Program {
-  
-  public static void main(String[] args) throws UnsufficientFundsException {
-    Bank bank = new BaseBank("Snyd og svindel");
-    Account a11 = new BaseAccount("#4711", bank);
-    Account a12 = new BaseAccount("#4712", bank);
-    a11.transfer("#4712", 200);
-    Customer kurt = new BaseCustomer(1, "Kurt Hansen");
-    Account a13 = new CustomerAccount("#4713", bank, kurt);
-    a13.transfer("#4712", 300);
-    Account a14 = new DepositAccount("#4714", bank, kurt);
-    a14.transfer("#4712", 400);
+
+    public static void main(String[] args) {
+        BankDataAccessor data = new BankDataAccessorStub();
+        BankManager manager = new BankManagerImplementation(data);
+        BankConsole console = new BankConsole(manager);
+        
+        console.run();        
     }
-  
-  }
+}
