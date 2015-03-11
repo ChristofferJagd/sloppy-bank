@@ -4,38 +4,46 @@
  * and open the template in the editor.
  */
 package dk.cphbusiness.bank.control;
-
-import org.junit.After;
-import org.junit.AfterClass;
+import dk.cphbusiness.banking.control.BankManager;
+import dk.cphbusiness.banking.control.BankManagerImplementation;
+import dk.cphbusiness.banking.data.BankDataAccessor;
+import dk.cphbusiness.banking.model.BaseCustomer;
+import dk.cphbusiness.banking.model.Customer;
+import static org.hamcrest.CoreMatchers.is;
+import org.jmock.Expectations;
+import org.jmock.Mockery;
+import org.jmock.integration.junit4.JUnitRuleMockery;
+import static org.junit.Assert.assertThat;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
-import static org.junit.Assert.*;
 
 /**
  *
  * @author Ebbe
  */
 public class BankManagerImplementationTest {
+    public Mockery context = new JUnitRuleMockery();
+    private BankManager manager;
     
     public BankManagerImplementationTest() {
     }
     
-    @BeforeClass
-    public static void setUpClass() {
+    @Test
+    public void setup()throws Exception {
+        final BankDataAccessor data = context.mock(BankDataAccessor.class);
+        final Customer kurt = new BaseCustomer(7, "Kurt");
+        BankManager manager = new BankManagerImplementation(data);
+        
+        
+        context.checking(new Expectations() {{
+            oneOf(data).saveCustomer(with(any(Customer.class)));
+            will(returnValue(kurt));
+        }});
+        int id = manager.createCustomer("Kurt");
+        assertThat(id, is(7));
     }
     
-    @AfterClass
-    public static void tearDownClass() {
-    }
     
-    @Before
-    public void setUp() {
-    }
-    
-    @After
-    public void tearDown() {
-    }
 
     // TODO add test methods here.
     // The methods must be annotated with annotation @Test. For example:
