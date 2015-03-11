@@ -1,4 +1,4 @@
-package dk.cphbusiness.banking;
+package dk.cphbusiness.banking.model;
 
 public interface Account {
   String getNumber();

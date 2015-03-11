@@ -1,5 +1,6 @@
-package dk.cphbusiness.banking;
+package dk.cphbusiness.banking.model;
 
+import dk.cphbusiness.banking.model.Account;
 import java.util.Date;
 
 public class Movement implements Comparable<Movement> {

@@ -1,4 +1,6 @@
-package dk.cphbusiness.banking;
+package dk.cphbusiness.banking.model;
+
+import dk.cphbusiness.banking.model.Account;
 
 public class UnsufficientFundsException extends Exception {
   private final Account account;

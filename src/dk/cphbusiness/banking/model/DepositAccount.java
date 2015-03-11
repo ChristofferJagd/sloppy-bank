@@ -1,4 +1,7 @@
-package dk.cphbusiness.banking;
+package dk.cphbusiness.banking.model;
+
+import dk.cphbusiness.banking.model.Customer;
+import dk.cphbusiness.banking.model.Bank;
 
 public class DepositAccount extends CustomerAccount {
 

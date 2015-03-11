@@ -1,5 +1,8 @@
-package dk.cphbusiness.banking;
+package dk.cphbusiness.banking.model;
 
+import dk.cphbusiness.banking.model.Customer;
+import dk.cphbusiness.banking.model.Bank;
+import dk.cphbusiness.banking.model.Account;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
